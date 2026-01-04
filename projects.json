@@ -1,0 +1,101 @@
+{
+  "projects": [
+    {
+      "slug": "sensei",
+      "title": "SENSEI – AI Tutor Platform",
+      "subtitle": "RAG-Based AI System",
+      "role": "GenAI Engineer",
+      "duration": "Nov 2025 – Present",
+      "description": [
+        "One-to-one AI tutoring platform built using a Retrieval-Augmented Generation (RAG) architecture.",
+        "Uses semantic search to retrieve relevant context and generate accurate, grounded responses.",
+        "Designed and implemented the RAG pipeline using LlamaIndex and Qdrant with a scalable FastAPI backend."
+      ],
+      "techStack": [
+        "Next.js",
+        "React",
+        "FastAPI",
+        "LlamaIndex",
+        "Qdrant",
+        "PostgreSQL"
+      ],
+      "gallery": [
+        {
+          "link": "/sensei",
+          "image": "https://img.freepik.com/free-vector/hand-drawn-painted-whitewash-background_23-2151171148.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "lift-my-mind",
+      "title": "LiftMyMind",
+      "subtitle": "Mental Health Support Platform",
+      "role": "Frontend Developer",
+      "duration": "Jun 2025 – Jul 2025",
+      "description": [
+        "Mental health support platform designed to help users manage anxiety, depression, and stress.",
+        "Features a well-being survey that calculates a depression score and recommends personalized music playlists.",
+        "Focused on calm UI design, smooth animations, and an emotionally supportive user experience."
+      ],
+      "techStack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS"
+      ],
+      "gallery": [
+{
+          "link": "/sensei",
+          "image": "https://img.freepik.com/premium-photo/creamy-texture-background-generative-ai_812563-4621.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "ecommerce-backend",
+      "title": "E-Commerce Backend Platform",
+      "subtitle": "Scalable Backend System",
+      "role": "Backend Developer",
+      "duration": "Oct 2025 – Nov 2025",
+      "description": [
+        "Developed a scalable backend system for an e-commerce platform using Django and MySQL.",
+        "Includes admin management for products, users, orders, and categories.",
+        "Implemented PDF report generation for sales and order analytics."
+      ],
+      "techStack": [
+        "Django",
+        "MySQL",
+        "REST APIs"
+      ],
+      "gallery": [
+{
+          "link": "/sensei",
+          "image": "https://img.freepik.com/premium-photo/creamy-texture-background-generative-ai_812563-4621.jpg"
+        }
+      ]
+    },
+    {
+      "slug": "healthcare-trust",
+      "title": "Healthcare Trust Website",
+      "subtitle": "Healthcare Web Platform",
+      "role": "Backend Developer",
+      "duration": "Jul 2025",
+      "description": [
+        "Developed and enhanced the official website for a healthcare trust.",
+        "Focused on improving accessibility, usability, and backend data handling.",
+        "Gained experience in healthcare-focused web systems and database integration."
+      ],
+      "techStack": [
+        "Django",
+        "HTML",
+        "CSS",
+        "PostgreSQL"
+      ],
+      "gallery": [
+{
+          "link": "/sensei",
+          "image": "https://img.freepik.com/premium-photo/creamy-texture-background-generative-ai_812563-4621.jpg"
+        }
+      ]
+    }
+  ]
+}

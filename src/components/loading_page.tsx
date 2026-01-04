@@ -14,14 +14,14 @@ export default function Loader(){
   }
   return(
     <>
-      <div className='flex flex-col bg-[#be7119] justify-center align-middle items-center text h-screen w-full'>
+      <div className='flex flex-col justify-center align-middle items-center text h-screen w-full'>
         <motion.div
           style={box}
           animate={{ rotate: 720 }}
           transition={{ duration: 2 }}
         />
         <div className="flex mt-10  flex-row">
-          <div className='text text-4xl text-[#FFF7E5] font-extrabold'>Loading  </div>
+          <div className='text text-4xl font-extrabold'>Loading  </div>
           <LoadingDots />
         </div>
       </div>

@@ -1,60 +1,45 @@
-
-import StackIcon from "tech-stack-icons";
-import  { DuneGradient } from "./ui/animatedbg";
+import { useTheme } from "next-themes"
 
 const stacks = [
-  { name: "HTML5",title: "HTML" },
-  { name: "CSS3",title: "CSS" },
-  { name: "Js",title: "JavaScript" },
-  { name: "Java", title: "Java" },
-  { name: "Reactjs",title: "React" },
-  { name: "Nextjs2",title: "NextJS" },
-  { name: "Node.js",title: "NodeJS" },
-  { name: "Tailwind CSS",title: "TailwindCSS" },
-  { name: "Bootstrap4",title: "Bootstrap" },
-  { name: "Linux",title: "Linux" },
-  { name: "Git",  title: "Git" },
-  { name: "Github", title: "Github" },
-  { name: "Python", title: "Python" },
-  { name: "Shadcnui", title: "ShadcnUI" },
-  { name: "Typescript", title: "Typescript" },
-  { name: "Canva", title: "Canva" },
-  { name: "Gsap", title: "Gsap" },
-];
-const styles = {
-  height: "2rem",
-  width: "2em",
-  pointerEvents: "none" as const
-};
-export default function Stacks() {
-  return (
-    <div className="flex flex-row flex-wrap justify-center gap-4 sm:gap-6 mt-8 mb-10">
-  {stacks.map((stack, index) => {
-    const iconName = `${stack.name}`.toLowerCase()
-      .replace(/\s+/g, '')
-      .replace(/\./g, '');
+  { name: "javascript", title: "JavaScript" },
+  { name: "java", title: "Java" },
+  { name: "react", title: "React" },
+  { name: "nextjs", title: "Next.js" },
+  { name: "nodejs", title: "Node.js" },
+  { name: "git", title: "Git" },
+  { name: "python", title: "Python" },
+  { name: "react", title: "shadcn/ui" },
+  { name: "typescript", title: "TypeScript" },
+  { name: "docker" },
+  { name: "fastapi" },
+  { name: "mongodb" },
+  { name: "postgres" },
+  { name: "postman" },
+  { name: "vercel" },
 
-    return (
-      <DuneGradient className=" flex flex-col items-center justify-center h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 rounded-full shadow-2xl
-                   border border-amber-300 backdrop-blur-2xl mx-2 
-                   cursor-zoom-in hover:scale-110 transition-transform
-                   duration-300 ease-in-out" >
-      <div
-        key={index}
-        className="flex flex-col items-center justify-center bg-transparent text-amber-950
-                   h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 rounded-full shadow-2xl
-                  backdrop-blur-2xl mx-2 
-                   cursor-zoom-in hover:scale-110 transition-transform
-                   duration-300 ease-in-out"
-      >
-        <StackIcon name={iconName} style={styles} />
-        <span className="font-michroma-rise text-shadow-2xs text-[10px] sm:text-xs font-bold mt-2 text-center">
-          {stack.title}
-        </span>
-      </div>
-      </DuneGradient>
-    );
-  })}
-</div>
+];
+
+export default function Stacks() {
+  const { theme } = useTheme()
+  const currenttheme = theme === 'dark' ? 'dark' : 'light'
+  return (
+    <div className="flex w-full flex-row flex-wrap justify-center gap-2 sm:gap-3 mt-5 mb-10">
+      {stacks.map((stack, index) => (
+        <div
+          key={index}
+          title={stack.title}
+          className="flex items-center justify-center
+                     border border-gray-600
+                     h-14 w-14 rounded-full shadow-2xl
+                     cursor-zoom-in hover:scale-110
+                     transition-transform duration-300 ease-in-out"
+        >
+          <img
+            src={`https://skillicons.dev/icons?i=${stack.name}&theme=${currenttheme}`}
+            className="h-8 w-8 pointer-events-none"
+          />
+        </div>
+      ))}
+    </div>
   );
 }

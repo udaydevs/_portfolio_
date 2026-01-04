@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.6",
+    "@mui/material": "^7.3.6",
     "@radix-ui/react-accordion": "^1.2.8",
     "@radix-ui/react-slot": "^1.2.0",
     "@tsparticles/react": "^3.0.0",
     "@types/nodemailer": "^6.4.17",
-    "animejs": "^4.0.2",
+    "animejs": "^4.2.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.9.2",
@@ -21,6 +25,7 @@
     "lucide-react": "^0.503.0",
     "motion": "^12.8.0",
     "next": "15.3.1",
+    "next-themes": "^0.4.6",
     "nodemailer": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -28,7 +33,7 @@
     "styled-components": "^6.1.17",
     "tailwind-merge": "^3.2.0",
     "tailwindcss-animate": "^1.0.7",
-    "tech-stack-icons": "^2.1.0",
+    "tech-stack-icons": "^3.3.2",
     "three": "^0.176.0",
     "tsparticles": "^3.8.1",
     "vanta": "^0.5.24"

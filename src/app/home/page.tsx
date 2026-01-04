@@ -10,7 +10,7 @@ import Stacks from "@/components/stacks";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import data from "../../../projects.json"
- const iconBtn =
+const iconBtn =
     "w-12 h-12 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black focus:outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/40";
 
 
@@ -86,7 +86,11 @@ export default function Page() {
                     {data.projects.map((project, i) => (
                         <div
                             key={i}
-                            ref={(el) => el && (cardRefs.current[i] = el)}
+                            ref={(el) => {
+                                if (el) {
+                                    cardRefs.current[i] = el;
+                                }
+                            }}
                             onClick={() => handleClick(i, project.gallery[0].link)}
                             style={{
                                 backgroundImage: `url(${project.gallery[0].image})`,

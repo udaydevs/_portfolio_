@@ -19,10 +19,11 @@
         "Qdrant",
         "PostgreSQL"
       ],
+      "url" : "https://dashboard-mu-neon-70.vercel.app/home",
       "gallery": [
         {
-          "link": "/sensei",
-          "image": "https://img.freepik.com/free-vector/hand-drawn-painted-whitewash-background_23-2151171148.jpg"
+          "link": "Sensei",
+          "image": "https://img.icons8.com/?size=96&id=Yl9ip6CjqAEI&format=png"
         }
       ]
     },
@@ -43,10 +44,11 @@
         "TypeScript",
         "Tailwind CSS"
       ],
+      "url": "https://lift-my-mind.vercel.app",
       "gallery": [
-{
-          "link": "/sensei",
-          "image": "https://img.freepik.com/premium-photo/creamy-texture-background-generative-ai_812563-4621.jpg"
+        {
+          "link": "LiftMyMind",
+          "image": "https://lift-my-mind.vercel.app/assets/img1-CvL0nEk2.png"
         }
       ]
     },
@@ -67,8 +69,8 @@
         "REST APIs"
       ],
       "gallery": [
-{
-          "link": "/sensei",
+        {
+          "link": "Shishi",
           "image": "https://img.freepik.com/premium-photo/creamy-texture-background-generative-ai_812563-4621.jpg"
         }
       ]
@@ -91,7 +93,7 @@
         "PostgreSQL"
       ],
       "gallery": [
-{
+        {
           "link": "/sensei",
           "image": "https://img.freepik.com/premium-photo/creamy-texture-background-generative-ai_812563-4621.jpg"
         }

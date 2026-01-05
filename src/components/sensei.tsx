@@ -1,22 +1,21 @@
 "use client"
-import Back from "@/components/backbutton";
-import data from "../../../projects.json"
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import data from "../../projects.json"
 import { animate } from "animejs"
 import LaunchIcon from '@mui/icons-material/Launch';
 import { useEffect, useRef } from "react";
 const pr = data.projects[0]
 
-export default function Page() {
+export default function Sensei({ onClose }: { onClose: () => void }) {
     const currentRef = useRef<HTMLDivElement | null>(null);
-    useEffect(() => {
-        if (!currentRef.current) return;
-
-        animate(currentRef.current, {
-            translateX: ["-120vw", 0],
-            duration: 700,
-            easing: "spring(1, 80, 10, 0)",
-        });
-    }, []);
+    // useEffect(() => {
+    //     if (!currentRef.current) return;
+    //     animate(currentRef.current, {
+    //         translateX: ["-120vw", 0],
+    //         duration: 700,
+    //         easing: "spring(1, 80, 10, 0)",
+    //     });
+    // }, []);
 
 
     return (
@@ -25,13 +24,26 @@ export default function Page() {
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
-        }} className="md:h-screen w-full flex justify-center ">
+        }} className="h-screen overflow-y-auto md:overflow-hidden w-auto md:w-full flex  justify-center text-[#333333] ">
+
             <div className="w-4/5 lg:w-[60%] flex flex-col mt-16">
-                <div className="w-full">
-                    <Back />
-                    <div className="flex flex-col md:flex-row mt-3">
-                        <div ref={currentRef} className="w-full md:w-2/5 text-2xl mb-4 overflow-y-auto">
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation()
+                        onClose()
+                    }}
+                    className=
+                    "w-12 h-12 py-2 px-3 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:bg-black hover:text-white "
+
+                >
+                    <ArrowBackIcon fontSize="large" />
+                </button>
+                <div className="flex flex-col md:flex-row justify-between w-full">
+                    <div className="flex md:w-2/5 flex-col md:flex-row mt-3 ">
+                        <div ref={currentRef} className="w-full text-2xl mb-4 overflow-y-auto">
+                            <div><img src={pr.gallery[0].image} className="h-20 w-20 object-contain" /></div>
                             <span
+                                onClick={() => window.open(pr.url)}
                                 className="title hover:underline">{pr.title}<br />({pr.subtitle})
                                 <LaunchIcon />
                             </span>
@@ -44,9 +56,10 @@ export default function Page() {
                                 )
                             })}
                         </div>
-                        <div className="md:w-3/6 pt-3 font-mono">{pr.description}</div>
                     </div>
+                    <div className="md:w-4/8 pt-3 font-mono">{pr.description}</div>
                 </div>
+
             </div>
         </div>
     )

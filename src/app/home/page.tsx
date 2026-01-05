@@ -1,19 +1,17 @@
 "use client";
 
 import { ModeToggle } from "@/components/ui/theme";
-import { animate } from "animejs";
+import { animate, cubicBezier, stagger } from "animejs";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Stacks from "@/components/stacks";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import data from "../../../projects.json"
 const iconBtn =
     "w-12 h-12 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black focus:outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/40";
-
-
 
 export default function Page() {
     const cardRefs = useRef<HTMLDivElement[]>([]);
@@ -44,14 +42,23 @@ export default function Page() {
             borderRadius: 0,
             easing: "inOutQuad",
             duration: 300,
-            complete: () => setTimeout(() => { router.push(link) }, 300),
+            complete: () => {
+                document.body.style.overflow = "auto";
+                setTimeout(() => { router.push(link) }, 250)
+            },
         });
     };
-
+    useEffect(() => {
+        animate(cardRefs.current, {
+            y: ['5rem', 0],
+            ease: cubicBezier(.7, .1, .5, .9),
+            delay: stagger(50),
+        })
+    })
     return (
-        <div className="w-full flex justify-center">
-            <div className="w-4/5 lg:w-[60%] flex flex-col mt-16">
-                <div className="absolute top-[5%] right-[5%]">
+        <div className="w-full flex justify-center overflow-auto">
+            <div  className="w-4/5 lg:w-[60%] flex flex-col mt-16 overflow-y-auto">
+                <div  className="absolute top-[5%] right-[5%]">
                     <ModeToggle />
                 </div>
 
@@ -68,7 +75,7 @@ export default function Page() {
                     AI.
                 </p>
 
-                <div className="w-[10rem] flex gap-4 mt-7">
+                <div className="w-40 flex gap-4 mt-7">
                     <button onClick={() => window.open("https://github.com/udaydevs")} className={iconBtn}>
                         <GitHubIcon fontSize="large" />
                     </button>
@@ -82,7 +89,7 @@ export default function Page() {
 
                 <p className="text-xl mt-10 font-medium">Projects</p>
 
-                <div className="flex flex-nowrap w-full overflow-x-auto gap-4 mt-6">
+                <div className="flex flex-nowrap w-full z-2 overflow-x-auto overflow-y-clip gap-4 mt-6">
                     {data.projects.map((project, i) => (
                         <div
                             key={i}
@@ -98,20 +105,21 @@ export default function Page() {
                                 backgroundPosition: "center",
                                 backgroundRepeat: "no-repeat",
                             }}
-                            className="flex-shrink-0 w-4/5 md:w-2/5 lg:w-[23%] h-80 rounded-xl cursor-pointer"
+                            className="shrink-0  w-4/5 md:w-2/5 lg:w-[23%] h-80 rounded-xl cursor-pointer"
                         >
                         </div>
                     ))}
                 </div>
+                <div className="z-0">
+                    <p className="text-xl mt-8 font-medium">Tech Stack</p>
+                    <Stacks />
+                    <div className="mt-10 border-t border-gray-600 p-3 flex justify-center">
+                        <p className="text-sm font-mono font-extralight flex items-center gap-1">
+                            Made with <FavoriteIcon fontSize="small" /> by udaydevs
+                        </p>
+                    </div>
+                </div>
 
-                <p className="text-xl mt-10 font-medium">Tech Stack</p>
-                <Stacks />
-
-                <footer className="mt-10 border-t border-gray-600 p-3 flex justify-center">
-                    <p className="text-sm font-mono font-extralight flex items-center gap-1">
-                        Made with <FavoriteIcon fontSize="small" /> by udaydevs
-                    </p>
-                </footer>
             </div>
         </div>
     );

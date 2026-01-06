@@ -8,39 +8,38 @@ const pr = data.projects[0]
 
 export default function Sensei({ onClose }: { onClose: () => void }) {
     const currentRef = useRef<HTMLDivElement | null>(null);
-    // useEffect(() => {
-    //     if (!currentRef.current) return;
-    //     animate(currentRef.current, {
-    //         translateX: ["-120vw", 0],
-    //         duration: 700,
-    //         easing: "spring(1, 80, 10, 0)",
-    //     });
-    // }, []);
-
-
     return (
-        <div style={{
-            backgroundImage: "url('https://img.freepik.com/free-vector/hand-drawn-painted-whitewash-background_23-2151171148.jpg?t=st=1767546192~exp=1767549792~hmac=dedc441bccc2f36da3371ed4c41ec72977ae3700611fc42cfd40f06fddb5c9d9&w=740')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-        }} className="h-screen overflow-y-auto md:overflow-hidden w-auto md:w-full flex  justify-center text-[#333333] ">
+        <div
+            className="relative w-full h-full rounded-xl"
+            style={{
+                backgroundImage:
+                    "url('https://img.freepik.com/free-vector/hand-drawn-painted-whitewash-background_23-2151171148.jpg?w=740')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+        >
+            <div className="card-cover absolute inset-0 z-10 flex flex-col items-center justify-center text-[#333]">
+                <img
+                    src={pr.gallery[0].image}
+                    className="h-24 w-24 object-contain mb-4"
+                />
+            </div>
 
-            <div className="w-4/5 lg:w-[60%] flex flex-col mt-16">
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation()
-                        onClose()
-                    }}
-                    className=
-                    "w-12 h-12 py-2 px-3 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:bg-black hover:text-white "
+            <div className="card-content absolute inset-0 z-0 overflow-y-auto text-[#333]">
+                <div className="w-4/5 lg:w-[60%] mx-auto mt-16">
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onClose();
+                        }}
+                        className="w-12 h-12 flex items-center justify-center rounded-full transition-all hover:scale-110 hover:bg-black hover:text-white"
+                    >
+                        <ArrowBackIcon fontSize="large" />
+                    </button>
 
-                >
-                    <ArrowBackIcon fontSize="large" />
-                </button>
-                <div className="flex flex-col md:flex-row justify-between w-full">
+                    <div className="flex flex-col md:flex-row justify-between w-full">
                     <div className="flex md:w-2/5 flex-col md:flex-row mt-3 ">
-                        <div ref={currentRef} className="w-full text-2xl mb-4 overflow-y-auto">
+                        <div ref={currentRef} className="card-title w-full text-2xl mb-4 overflow-y-auto">
                             <div><img src={pr.gallery[0].image} className="h-20 w-20 object-contain" /></div>
                             <span
                                 onClick={() => window.open(pr.url)}
@@ -57,10 +56,11 @@ export default function Sensei({ onClose }: { onClose: () => void }) {
                             })}
                         </div>
                     </div>
-                    <div className="md:w-4/8 pt-3 font-mono">{pr.description}</div>
+                    <div className="card-description md:w-4/8 py-3 font-mono">{pr.description}</div>
                 </div>
 
             </div>
         </div>
+    </div>
     )
 }

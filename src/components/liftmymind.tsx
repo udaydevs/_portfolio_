@@ -6,42 +6,41 @@ import LaunchIcon from '@mui/icons-material/Launch';
 import { useEffect, useRef } from "react";
 const pr = data.projects[1]
 
-export default function LiftMyMind({ onClose }: { onClose: () => void }) {
+export default function Sensei({ onClose }: { onClose: () => void }) {
     const currentRef = useRef<HTMLDivElement | null>(null);
-    // useEffect(() => {
-    //     if (!currentRef.current) return;
-    //     animate(currentRef.current, {
-    //         translateX: ["-120vw", 0],
-    //         duration: 700,
-    //         easing: "spring(1, 80, 10, 0)",
-    //     });
-    // }, []);
-
-
-
     return (
-        <div style={{
-            backgroundImage: "url('https://img.freepik.com/premium-photo/subtle-dark-textured-background-with-vignette-effect_457879-2164.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-        }} className="h-screen w-full flex overflow-y-auto md:overflow-hidden justify-center text-white ">
-            <div className="w-4/5 lg:w-[60%] flex flex-col mt-16">
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation()
-                        onClose()
-                    }}
-                    className=
-                    "w-12 h-12 px-3 py-2 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:bg-white hover:text-black "
+        <div
+            className="relative w-full h-full rounded-xl  "
+            style={{
+                backgroundImage:
+                    "url('https://img.freepik.com/premium-photo/scanned-paper-old-vintage-wrinkled-minimalist-white-black-newspaper-texture-overlay_820074-400.jpg')",
+                backgroundSize: "contain",
+                backgroundPosition: "center",
+            }}
+        >
+            <div className="card-cover absolute inset-0 z-10 overflow-hidden flex flex-col items-center justify-center ">
+                <img
+                    src={pr.gallery[0].image}
+                    className="h-24 w-24 scale-250 object-contain mb-4"
+                />
+            </div>
 
-                >
-                    <ArrowBackIcon fontSize="large" />
-                </button>
-                <div className="flex flex-col md:flex-row justify-between w-full">
-                    <div className="flex md:w-2/5 flex-col md:flex-row mt-3 ">
+            <div className="card-content absolute inset-0 z-0 overflow-y-auto text-white">
+                <div className="w-4/5 lg:w-[60%] pb-5 mx-auto mt-16">
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onClose();
+                        }}
+                        className="w-12 h-12 flex items-center justify-center rounded-full transition-all hover:scale-110 hover:bg-white hover:text-black"
+                    >
+                        <ArrowBackIcon fontSize="large" />
+                    </button>
+
+                    <div className="flex flex-col md:flex-row justify-between w-full ">
+                    <div className="card-title flex md:w-2/5 flex-col md:flex-row mt-3 ">
                         <div ref={currentRef} className="w-full text-2xl mb-4 overflow-y-auto">
-                            <div className="h-25 w-25"><img src={pr.gallery[0].image} className="scale-130 h-25 w-25 object-contain" /></div>
+                            <div><img src={pr.gallery[0].image} className="h-20 w-20 scale-200 mb-2 object-contain" /></div>
                             <span
                                 onClick={() => window.open(pr.url)}
                                 className="title hover:underline">{pr.title}<br />({pr.subtitle})
@@ -57,10 +56,11 @@ export default function LiftMyMind({ onClose }: { onClose: () => void }) {
                             })}
                         </div>
                     </div>
-                    <div className="md:w-4/8 pt-3 font-mono">{pr.description}</div>
+                    <div className="card-description md:w-4/8 py-3  font-mono">{pr.description}</div>
                 </div>
 
             </div>
         </div>
+    </div>
     )
 }

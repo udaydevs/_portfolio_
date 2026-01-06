@@ -8,36 +8,37 @@ const pr = data.projects[2]
 
 export default function Shishi({ onClose }: { onClose: () => void }) {
     const currentRef = useRef<HTMLDivElement | null>(null);
-    // useEffect(() => {
-    //     if (!currentRef.current) return;
-    //     animate(currentRef.current, {
-    //         translateX: ["-120vw", 0],
-    //         duration: 700,
-    //         easing: "spring(1, 80, 10, 0)",
-    //     });
-    // }, []);
-
 
     return (
-        <div style={{
-            backgroundImage: "url('https://img.freepik.com/premium-photo/subtle-dark-textured-background-with-vignette-effect_457879-2164.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-        }} className="h-screen overflow-y-auto md:overflow-hidden w-full flex justify-center ">
-            <div className="w-4/5 lg:w-[60%] flex flex-col mt-16">
-                <button
-                    onClick={(e) => {
-                        e.stopPropagation()
-                        onClose()
-                    }}
-                    className=
-                    "w-12 h-12  px-3 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:bg-black hover:text-white "
+        <div
+            className="relative w-full h-full rounded-xl overflow-hidden "
+            style={{
+                backgroundImage:
+                    "url('https://img.freepik.com/premium-photo/scanned-paper-old-vintage-wrinkled-minimalist-white-black-newspaper-texture-overlay_820074-400.jpg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+        >
+            <div className="card-cover absolute inset-0 z-10 flex flex-col items-center justify-center ">
+                <img
+                    src={pr.gallery[0].image}
+                    className="h-24 w-24 object-contain mb-4"
+                />
+            </div>
 
-                >
-                    <ArrowBackIcon fontSize="large" />
-                </button>
-                <div className="flex flex-col md:flex-row justify-between w-full">
+            <div className="card-content absolute inset-0 z-0 overflow-y-auto text-white">
+                <div className="w-4/5 lg:w-[60%] mx-auto mt-16">
+                    <button
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            onClose();
+                        }}
+                        className="w-12 h-12 flex items-center justify-center rounded-full transition-all hover:scale-110 hover:bg-white hover:text-black"
+                    >
+                        <ArrowBackIcon fontSize="large" />
+                    </button>
+
+                    <div className="flex flex-col md:flex-row justify-between w-full ">
                     <div className="flex md:w-2/5 flex-col md:flex-row mt-3 ">
                         <div ref={currentRef} className="w-full text-2xl mb-4 overflow-y-auto">
                             <div><img src={pr.gallery[0].image} className="h-20 w-20 object-contain" /></div>
@@ -61,5 +62,6 @@ export default function Shishi({ onClose }: { onClose: () => void }) {
 
             </div>
         </div>
+    </div>
     )
 }

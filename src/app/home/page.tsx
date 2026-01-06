@@ -40,6 +40,8 @@ export default function Page() {
         activeIndex.current = index;
         document.body.style.overflow = "hidden";
 
+        el.classList.add("is-expanding");
+
         Object.assign(el.style, {
             position: "fixed",
             top: `${rect.top}px`,
@@ -47,6 +49,7 @@ export default function Page() {
             width: `${rect.width}px`,
             height: `${rect.height}px`,
             zIndex: "100",
+            overflow: "hidden",
         });
 
         animate(el, {
@@ -69,6 +72,8 @@ export default function Page() {
 
         if (!el || !original) return;
 
+        el.classList.remove("is-expanding");
+
         animate(el, {
             top: `${original.top}px`,
             left: `${original.left}px`,
@@ -85,6 +90,7 @@ export default function Page() {
                     width: "",
                     height: "",
                     zIndex: "",
+                    overflow: "",
                 });
 
                 document.body.style.overflow = "auto";
@@ -92,6 +98,7 @@ export default function Page() {
             },
         });
     };
+
 
     useLayoutEffect(() => {
         animate(cardRefs.current, {
@@ -182,12 +189,6 @@ export default function Page() {
                                 }
                             }}
                             onClick={() => openCard(i)}
-                            style={{
-                                backgroundImage: `url(${project.gallery[0].image})`,
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                backgroundRepeat: "no-repeat",
-                            }}
                             className="shrink-0 hover:-translate-y-1 w-4/5 md:w-2/5 lg:w-[23%] h-80 rounded-2xl cursor-pointer"
                         >
                             {project.gallery[0].link == 'Sensei' ?

@@ -19,7 +19,7 @@
         "Qdrant",
         "PostgreSQL"
       ],
-      "url" : "https://dashboard-mu-neon-70.vercel.app/home",
+      "url": "https://dashboard-mu-neon-70.vercel.app/home",
       "gallery": [
         {
           "link": "Sensei",
@@ -65,37 +65,41 @@
       ],
       "techStack": [
         "Django",
-        "MySQL",
-        "REST APIs"
+        "MySQL"
       ],
+      "url": "https://github.com/udaydevs/shishi.git",
       "gallery": [
         {
           "link": "Shishi",
-          "image": "https://img.freepik.com/premium-photo/creamy-texture-background-generative-ai_812563-4621.jpg"
+          "image": "https://static.vecteezy.com/system/resources/previews/031/611/140/large_2x/shopping-cart-illustration-ai-generative-free-png.png"
         }
       ]
     },
     {
-      "slug": "healthcare-trust",
-      "title": "Healthcare Trust Website",
-      "subtitle": "Healthcare Web Platform",
+      "slug": "terminal-portfolio",
+      "title": "Personal Portfolio",
+      "subtitle": "Interactive CLI Interface",
       "role": "Backend Developer",
-      "duration": "Jul 2025",
+      "duration": "2026",
       "description": [
-        "Developed and enhanced the official website for a healthcare trust.",
-        "Focused on improving accessibility, usability, and backend data handling.",
-        "Gained experience in healthcare-focused web systems and database integration."
+        "Built an interactive, keyboard-driven terminal portfolio using React and Ink.",
+        "Implemented smooth keyboard navigation with arrow keys to explore different sections.",
+        "Designed visually engaging CLI output using gradient text and ASCII banners.",
+        "Structured the application into modular sections including About, Projects, Skills, and Contact.",
+        "Provided a seamless developer experience with simple installation and execution steps."
       ],
       "techStack": [
-        "Django",
-        "HTML",
-        "CSS",
-        "PostgreSQL"
+        "React",
+        "Ink",
+        "Node.js",
+        "ink-gradient",
+        "ink-big-text"
       ],
+      "url": "https://github.com/udaydevs/cli-portfolio.git",
       "gallery": [
         {
-          "link": "/sensei",
-          "image": "https://img.freepik.com/premium-photo/creamy-texture-background-generative-ai_812563-4621.jpg"
+          "link": "clitool",
+          "image": "https://cdn-icons-png.freepik.com/512/17858/17858874.png"
         }
       ]
     }

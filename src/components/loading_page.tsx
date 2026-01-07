@@ -22,7 +22,6 @@ export default function Loader(){
         />
         <div className="flex mt-10  flex-row">
           <div className='text text-4xl font-extrabold'>Loading  </div>
-          <LoadingDots />
         </div>
       </div>
     </>

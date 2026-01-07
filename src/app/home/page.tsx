@@ -12,6 +12,7 @@ import data from "../../../projects.json"
 import Sensei from "@/components/sensei";
 import LiftMyMind from "@/components/liftmymind";
 import Shishi from "@/components/Shishi";
+import CliTool from "@/components/cli";
 
 const iconBtn =
     "w-12 h-12 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black focus:outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/40";
@@ -99,7 +100,6 @@ export default function Page() {
         });
     };
 
-
     useLayoutEffect(() => {
         animate(cardRefs.current, {
             opacity: [0, 1],
@@ -109,15 +109,14 @@ export default function Page() {
         });
 
         if (contactsRef.current) {
-            animate(contactsRef.current.children, {
+            animate(contactsRef.current, {
                 opacity: [0, 1],
-                y: ['1rem', 0],
+                y: ['2rem', 0],
                 easing: 'out(3)',
                 delay: stagger(50),
             });
         }
-
-        if (textRefs.current) {
+        if (textRefs.current && contactsRef.current) {
             splitInstance.current = splitText(textRefs.current, {
                 lines: { wrap: 'clip' },
             }).addEffect(({ lines }) =>
@@ -136,19 +135,29 @@ export default function Page() {
         };
     }, []);
 
+    useLayoutEffect(() => {
+        return () => {
+            document.body.style.overflow = "auto";
+            activeIndex.current = null;
+        };
+    }, []);
+
     return (
-        <div className="w-full flex justify-center overflow-auto">
-            <div className="w-4/5 lg:w-[60%] flex flex-col mt-16 overflow-y-auto">
-                <div className="absolute top-[5%] right-[5%]">
+        <div className="w-full flex justify-center overflow-y-auto">
+            <div className="w-9/10 lg:w-[60%] flex flex-col mt-16 overflow-y-auto">
+                <div className="
+                flex justify-end 
+                ">
+                    <p ref={textRefs} style={{ visibility: 'visible' }}
+                        className="text-3xl md:text-4xl w-full h-20">
+                        Uday
+                        <br />
+                        Pratap Singh
+                    </p>
                     <ModeToggle />
                 </div>
 
-                <p ref={textRefs} style={{ visibility: 'visible' }}
-                    className="text-3xl md:text-4xl w-full h-20">
-                    Uday
-                    <br />
-                    Pratap Singh
-                </p>
+
 
                 <p className="text-sm font-mono mt-2 md:mt-5">
                     Hi, I’m a second-year B.Tech student and a passionate developer who
@@ -179,7 +188,7 @@ export default function Page() {
 
                 <p className="text-xl mt-5 font-medium">Projects</p>
 
-                <div className="flex items-center flex-nowrap w-full z-2 h-88 overflow-x-auto overflow-y-clip gap-4 mt-3">
+                <div className="no-scrollbar flex  items-center justify-around flex-nowrap w-full z-2 h-88 overflow-x-auto overflow-y-clip gap-4 mt-3">
                     {data.projects.map((project, i) => (
                         <div
                             key={i}
@@ -189,11 +198,11 @@ export default function Page() {
                                 }
                             }}
                             onClick={() => openCard(i)}
-                            className="shrink-0 hover:-translate-y-1 w-4/5 md:w-2/5 lg:w-[23%] h-80 rounded-2xl cursor-pointer"
+                            className="shrink-0 hover:-translate-y-3 hover:ease-in-out no-scrollbar overflow-hidden w-4/5 md:w-2/5 lg:w-[23%] h-80 rounded-2xl cursor-pointer"
                         >
                             {project.gallery[0].link == 'Sensei' ?
                                 <Sensei onClose={closeCard} /> : project.gallery[0].link == 'Shishi' ?
-                                    <Shishi onClose={closeCard} /> : <LiftMyMind onClose={closeCard} />}
+                                    <Shishi onClose={closeCard} /> : project.gallery[0].link == 'clitool' ? <CliTool onClose={closeCard} /> : <LiftMyMind onClose={closeCard} />}
                         </div>
                     ))}
                 </div>

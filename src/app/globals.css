@@ -116,63 +116,68 @@ body {
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
-@layer utilities {
-    /* Chrome, Safari and Opera */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
 
-    .no-scrollbar {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
-    }
+@layer utilities {
+  /* Chrome, Safari and Opera */
+
 }
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
 .card-content {
-    opacity: 0;
-    transform: translateY(1rem);
-    transition: opacity 300ms ease, transform 300ms ease;
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 300ms ease, transform 300ms ease;
 }
 
 .card-cover {
-    transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
 }
 
 .is-expanding .card-cover {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .is-expanding .card-content {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 200ms;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 200ms;
 }
 
 .card-title {
-    transform: translateX(-100vw);
-    transition:
-        transform 1s cubic-bezier(.22, 1, .36, 1);
+  transform: translateX(-100vw);
+  transition:
+    transform 1s cubic-bezier(.22, 1, .36, 1);
 }
 
 .is-expanding .card-title {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
 .card-description {
-    transform: translateY(-100vh);
-    transition:
-        transform 1s cubic-bezier(.22, 1, .36, 1);
+  transform: translateY(-100vh);
+  transition:
+    transform 1s cubic-bezier(.22, 1, .36, 1);
 }
 
 .is-expanding .card-description {
-    transform: translateY(0);
+  transform: translateY(0);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -2,28 +2,22 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import data from "../../projects.json"
 import LaunchIcon from '@mui/icons-material/Launch';
-const pr = data.projects[0]
+const pr = data.projects[3]
 
-export default function Sensei({ onClose }: { onClose: () => void }) {
+export default function CliTool({ onClose }: { onClose: () => void }) {
     return (
         <div
-            className="relative w-full h-full"
-            style={{
-                backgroundImage:
-                    "url('https://img.freepik.com/free-vector/hand-drawn-painted-whitewash-background_23-2151171148.jpg?w=740')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
+            className="relative w-full h-full bg-[#7CC99F]"
         >
-            <div className="card-cover absolute inset-0 z-10 flex flex-col items-center justify-center text-[#333]">
+            <div className="card-cover absolute inset-0 z-10 no-scrollbar flex flex-col items-center justify-center ">
                 <img
                     src={pr.gallery[0].image}
                     className="h-24 w-24 object-contain mb-4"
                 />
             </div>
 
-            <div className="card-content absolute inset-0 z-0 overflow-y-auto pb-20 sm:pb-0 text-[#333]">
-                <div className="w-4/5 lg:w-[60%] mx-auto mt-10 md:mt-16">
+            <div className="card-content absolute inset-0 z-0 overflow-y-auto  pb-20 sm:pb-0 text-black">
+                <div className="w-4/5 lg:w-[60%] pb-5 mx-auto mt-10 md:mt-16">
                     <button
                         onClick={(e) => {
                             e.stopPropagation();
@@ -34,10 +28,10 @@ export default function Sensei({ onClose }: { onClose: () => void }) {
                         <ArrowBackIcon fontSize="large" />
                     </button>
 
-                    <div className="flex flex-col md:flex-row justify-between w-full">
-                    <div className="flex md:w-2/5 flex-col md:flex-row mt-3 ">
-                        <div className="card-title w-full text-2xl mb-4 overflow-y-auto">
-                            <div><img src={pr.gallery[0].image} className="h-20 w-20 object-contain" /></div>
+                    <div className="flex flex-col md:flex-row justify-between w-full ">
+                    <div className="card-title flex md:w-2/5 flex-col md:flex-row mt-3 ">
+                        <div className="w-full text-2xl mb-4 overflow-y-auto">
+                            <div><img src={pr.gallery[0].image} className="h-20 w-20  mb-2 object-contain" /></div>
                             <span
                                 onClick={() => window.open(pr.url)}
                                 className="title hover:underline">{pr.title}<br />({pr.subtitle})
@@ -53,7 +47,7 @@ export default function Sensei({ onClose }: { onClose: () => void }) {
                             })}
                         </div>
                     </div>
-                    <div className="card-description md:w-4/8 py-3 z-0 font-mono">{pr.description}</div>
+                    <div className="card-description md:w-4/8 py-3  font-mono">{pr.description}</div>
                 </div>
 
             </div>

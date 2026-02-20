@@ -19,9 +19,27 @@ const rammetto = Rammetto_One({
 // })
 
 export const metadata = {
-  title: 'My App',
-  description: 'Using custom fonts',
-};
+  title: {
+    default: "Uday Pratap Singh | Backend Developer",
+    template: "%s | Uday Pratap Singh",
+  },
+
+  description:
+    "Uday Pratap Singh is a Backend Developer and Generative AI enthusiast skilled in Python, Django, FastAPI, APIs, and modern web technologies.",
+
+  keywords: [
+    "Uday Pratap Singh",
+    "Backend Developer",
+    "Java Developer",
+    "Spring Boot",
+    "GenAI",
+    "Portfolio",
+  ],
+
+  authors: [{ name: "Uday Pratap Singh" }],
+
+  creator: "Uday Pratap Singh",
+}
 
 export default function RootLayout({
   children,

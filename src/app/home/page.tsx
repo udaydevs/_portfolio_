@@ -211,7 +211,7 @@ export default function Page() {
                     <Stacks />
                     <div className="mt-15 border-t border-gray-600 p-3 flex justify-center">
                         <p className="text-sm font-mono font-extralight flex items-center gap-1">
-                            Made with <FavoriteIcon fontSize="small" /> by udaydevs
+                            Made with <FavoriteIcon fontSize="small" /> by <a href="https://github.com/udaydevs" >udaydevs</a>
                         </p>
                     </div>
                 </div>

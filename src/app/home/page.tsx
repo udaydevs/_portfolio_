@@ -13,9 +13,8 @@ import Sensei from "@/components/sensei";
 import LiftMyMind from "@/components/liftmymind";
 import Shishi from "@/components/Shishi";
 import CliTool from "@/components/cli";
+import IconWrapper from "@/components/ui/IconWrapper";
 
-const iconBtn =
-    "w-12 h-12 flex items-center justify-center rounded-full transition-all duration-200 hover:scale-110 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black focus:outline-none focus:ring-2 focus:ring-black/30 dark:focus:ring-white/40";
 
 export default function Page() {
     const cardRefs = useRef<HTMLDivElement[]>([]);
@@ -167,23 +166,15 @@ export default function Page() {
                 </p>
 
                 <div ref={contactsRef} className="w-50 px-1 h-fit flex gap-4 mt-7">
-                    <div>
-                        <button onClick={() => window.open("https://github.com/udaydevs")} className={iconBtn}>
-                            <GitHubIcon fontSize="large" />
-                        </button>
-                    </div>
-                    <div>
-
-                        <button onClick={() => window.open("mailto:udaysinghno2005@gmail.com")} className={iconBtn}>
-                            <MarkunreadIcon fontSize="large" />
-                        </button>
-                    </div>
-                    <div>
-
-                        <button onClick={() => window.open("https://www.linkedin.com/in/uday-coder/")} className={iconBtn}>
-                            <LinkedInIcon fontSize="large" />
-                        </button>
-                    </div>
+                    <IconWrapper dashed link="https://github.com/udaydevs">
+                        <GitHubIcon fontSize="large" />
+                    </IconWrapper>
+                    <IconWrapper dashed link="mailto:udaysinghno2005@gmail.com">
+                        <MarkunreadIcon fontSize="large" />
+                    </IconWrapper>
+                    <IconWrapper dashed link="https://www.linkedin.com/in/uday-coder/">
+                        <LinkedInIcon fontSize="large" />
+                    </IconWrapper>
                 </div>
 
                 <p className="text-xl mt-5 font-medium">Projects</p>

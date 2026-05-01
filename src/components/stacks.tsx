@@ -23,13 +23,13 @@ export default function Stacks() {
   const { theme } = useTheme()
   const currenttheme = theme === 'dark' ? 'dark' : 'light'
   return (
-    <div className="flex w-full flex-row flex-wrap justify-center gap-2 sm:gap-3 mt-5 mb-10">
+    <div className="flex w-full  flex-row flex-wrap justify-center gap-2 sm:gap-3 mt-5 mb-10">
       {stacks.map((stack, index) => (
         <div
           key={index}
           title={stack.title}
           className="flex items-center justify-center
-                     border border-gray-600
+                     border border-dashed dark:border-gray-50 border-gray-800
                      h-14 w-14 rounded-full shadow-2xl
                      cursor-zoom-in hover:scale-110
                      transition-transform duration-300 ease-in-out"

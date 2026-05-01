@@ -1,7 +1,6 @@
 "use client"
 import * as motion from "motion/react-client"
-import { useState } from "react"
-import LoadingDots from '@/components/dotloader';
+
 export default function Loader(){
   const box = {
     width: 200,

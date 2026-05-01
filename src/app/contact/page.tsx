@@ -1,5 +1,4 @@
 "use client"
-import React from "react";
 import img4 from "../../../public/images/img4.jpg";
 
 
@@ -26,7 +25,7 @@ export default function Contact() {
                             Name
                         </label>
                         <input
-                            className="shadow font-michroma-rise appearance-none border rounded h-11 box-border w-full py-2 px-3 text-white leading-3 focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded h-11 box-border w-full py-2 px-3 text-white leading-3 focus:outline-none focus:shadow-outline"
                             id="name"
                             type="text"
                             placeholder="Your Name"
@@ -37,7 +36,7 @@ export default function Contact() {
                             email
                         </label>
                         <input
-                            className="shadow z-20 font-michroma-rise appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow z-20 appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                             id="email"
                             type="email"
                             placeholder="Your Email"
@@ -48,7 +47,7 @@ export default function Contact() {
                             Message
                         </label>
                         <textarea
-                            className="shadow font-michroma-rise appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline"
                             id="message"
                             rows={4}
                             placeholder="Your Message"

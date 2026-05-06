@@ -29,10 +29,10 @@ export default function Stacks() {
           key={index}
           title={stack.title}
           className="flex items-center justify-center
-                     border border-dashed dark:border-gray-50 border-gray-800
+                     border border-dashed dark:border-gray-50 border-gray-800 hover:border-[var(--portfolio-accent)]
                      h-14 w-14 rounded-full shadow-2xl
                      cursor-zoom-in hover:scale-110
-                     transition-transform duration-300 ease-in-out"
+                     transition-all duration-300 ease-in-out hover:bg-[var(--portfolio-accent-soft)]"
         >
           <img
             src={`https://skillicons.dev/icons?i=${stack.name}&theme=${currenttheme}`}

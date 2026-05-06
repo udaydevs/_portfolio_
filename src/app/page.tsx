@@ -1,18 +1,12 @@
 'use client'
+import Loader from "@/components/loading_page";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-import { useEffect } from "react"
-import { useRouter } from "next/navigation"
-import Loader from "@/components/loading_page"
-export default function Loading(){
-  const router =  useRouter()
-
-  useEffect(()=>{
-    router.push("/home")
-  },[router])
-
-  return(
-    <>
-      <Loader/>
-    </>
-  )
+export default function Page() {
+  const router = useRouter();
+  useEffect(() => {
+    router.push('./home')
+  }, [])
+  return <Loader />;
 }

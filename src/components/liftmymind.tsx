@@ -7,7 +7,7 @@ const pr = data.projects[1]
 export default function Sensei({ onClose }: { onClose: () => void }) {
     return (
         <div
-            className="relative w-full h-full bg-[#1f1f1f]"
+            className="relative w-full  h-full bg-[#1f1f1f]"
         >
             <div className="card-cover absolute inset-0 z-10 overflow-hidden flex flex-col items-center justify-center ">
                 <img

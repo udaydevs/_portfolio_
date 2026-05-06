@@ -1,6 +1,5 @@
 "use client";
 
-import { ModeToggle } from "@/components/ui/theme";
 import { animate, cubicBezier, splitText, stagger } from "animejs";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import MarkunreadIcon from "@mui/icons-material/Markunread";
@@ -14,6 +13,7 @@ import LiftMyMind from "@/components/liftmymind";
 import Shishi from "@/components/Shishi";
 import CliTool from "@/components/cli";
 import IconWrapper from "@/components/ui/IconWrapper";
+import Sidebar from "@/components/ui/sidebar";
 
 
 export default function Page() {
@@ -59,7 +59,7 @@ export default function Page() {
             height: "100vh",
             borderRadius: 0,
             easing: "inOutQuad",
-            duration: 350,
+            duration: 450,
         });
     };
 
@@ -99,23 +99,9 @@ export default function Page() {
         });
     };
 
-    useLayoutEffect(() => {
-        animate(cardRefs.current, {
-            opacity: [0, 1],
-            y: ['5rem', 0],
-            easing: cubicBezier(.7, .1, .5, .9),
-            delay: stagger(50),
-        });
-
-        if (contactsRef.current) {
-            animate(contactsRef.current, {
-                opacity: [0, 1],
-                y: ['2rem', 0],
-                easing: 'out(3)',
-                delay: stagger(50),
-            });
-        }
-        if (textRefs.current && contactsRef.current) {
+useLayoutEffect(() => {
+    const timer = setTimeout(() => {
+        if (textRefs.current) {
             splitInstance.current = splitText(textRefs.current, {
                 lines: { wrap: 'clip' },
             }).addEffect(({ lines }) =>
@@ -127,13 +113,14 @@ export default function Page() {
                 })
             );
         }
+    }, 50);
 
-        return () => {
-            splitInstance.current?.revert();
-            splitInstance.current = null;
-        };
-    }, []);
-
+    return () => {
+        clearTimeout(timer);
+        splitInstance.current?.revert();
+        splitInstance.current = null;
+    };
+}, []);
     useLayoutEffect(() => {
         return () => {
             document.body.style.overflow = "auto";
@@ -148,21 +135,18 @@ export default function Page() {
                 flex justify-end 
                 ">
                     <p ref={textRefs} style={{ visibility: 'visible' }}
-                        className="text-3xl md:text-4xl w-full h-20">
+                        className="text-3xl z-10 md:text-4xl w-full h-20">
                         Uday
                         <br />
                         Pratap Singh
                     </p>
-                    <ModeToggle />
+                    <Sidebar />
                 </div>
 
 
 
                 <p className="text-sm font-mono mt-2 md:mt-5">
-                    Hi, I’m a second-year B.Tech student and a passionate developer who
-                    loves building real-world projects. I work mainly in Python, Django,
-                    FastAPI and I’m deeply interested in backend development and Generative
-                    AI.
+                    Full-Stack & AI Engineer based in Delhi-NCR. I build scalable web apps and intelligent AI systems using Python, FastAPI, Next.js, and Generative AI. Open to freelance, internships & full-time roles.I build scalable web applications and intelligent AI-driven systems, from RAG pipelines and LLM integrations to clean, fast APIs and polished frontend experiences.
                 </p>
 
                 <div ref={contactsRef} className="w-50 px-1 h-fit flex gap-4 mt-7">
@@ -177,9 +161,11 @@ export default function Page() {
                     </IconWrapper>
                 </div>
 
-                <p className="text-xl mt-5 font-medium">Projects</p>
+                <p className="text-xl mt-5 font-medium">
+                    Projects
+                </p>
 
-                <div className="no-scrollbar flex  items-center justify-around flex-nowrap w-full z-2 h-88 overflow-x-auto overflow-y-clip gap-4 mt-3">
+                <div className="no-scrollbar flex  items-center justify-around flex-nowrap w-full z-2 md:z-70 h-88 overflow-x-auto overflow-y-clip gap-4 mt-3">
                     {data.projects.map((project, i) => (
                         <div
                             key={i}
@@ -189,7 +175,7 @@ export default function Page() {
                                 }
                             }}
                             onClick={() => openCard(i)}
-                            className="shrink-0 hover:-translate-y-3 hover:ease-in-out no-scrollbar overflow-hidden w-4/5 md:w-2/5 lg:w-[23%] h-80 rounded-2xl cursor-pointer"
+                            className="shrink-0 hover:-translate-y-3 hover:ease-in-out no-scrollbar overflow-hidden w-4/5 md:w-2/5 lg:w-[23%] h-80 rounded-2xl cursor-pointer ring-1 ring-transparent transition-all hover:ring-[var(--portfolio-accent)]"
                         >
                             {project.gallery[0].link == 'Sensei' ?
                                 <Sensei onClose={closeCard} /> : project.gallery[0].link == 'Shishi' ?
@@ -198,11 +184,13 @@ export default function Page() {
                     ))}
                 </div>
                 <div className="z-0">
-                    <p className="text-xl mt-3 font-medium">Tech Stack</p>
+                    <p className="text-xl mt-3 font-medium">
+                        Tech Stack
+                    </p>
                     <Stacks />
-                    <div className="mt-15 border-t border-gray-600 p-3 flex justify-center">
+                    <div className="mt-10 border-t border-gray-600 p-3 flex justify-center transition-colors hover:border-[var(--portfolio-accent)]">
                         <p className="text-sm font-mono font-extralight flex items-center gap-1">
-                            Made with <FavoriteIcon fontSize="small" /> by <a href="https://github.com/udaydevs" >udaydevs</a>
+                            Made with <FavoriteIcon fontSize="small" className="accent-text" /> by <a href="https://github.com/udaydevs" className="transition hover:text-[var(--portfolio-accent)]" >udaydevs</a>
                         </p>
                     </div>
                 </div>

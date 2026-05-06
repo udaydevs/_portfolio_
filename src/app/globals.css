@@ -43,6 +43,9 @@
 
 :root {
   --radius: 0.625rem;
+  --portfolio-accent: #737373;
+  --portfolio-accent-soft: rgb(115 115 115 / 0.14);
+  --portfolio-accent-strong: #404040;
   --background: oklch(1 0 0);
   --foreground: #333333;
   --card: oklch(1 0 0);
@@ -74,6 +77,36 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+}
+
+:root[data-accent="default"] {
+  --portfolio-accent: #737373;
+  --portfolio-accent-soft: rgb(115 115 115 / 0.14);
+  --portfolio-accent-strong: #404040;
+}
+
+:root[data-accent="green"] {
+  --portfolio-accent: #16a34a;
+  --portfolio-accent-soft: rgb(22 163 74 / 0.14);
+  --portfolio-accent-strong: #166534;
+}
+
+:root[data-accent="pink"] {
+  --portfolio-accent: #db2777;
+  --portfolio-accent-soft: rgb(219 39 119 / 0.14);
+  --portfolio-accent-strong: #9d174d;
+}
+
+:root[data-accent="orange"] {
+  --portfolio-accent: #ea580c;
+  --portfolio-accent-soft: rgb(234 88 12 / 0.14);
+  --portfolio-accent-strong: #9a3412;
+}
+
+:root[data-accent="blue"] {
+  --portfolio-accent: #2563eb;
+  --portfolio-accent-soft: rgb(37 99 235 / 0.14);
+  --portfolio-accent-strong: #1d4ed8;
 }
 
 .dark {
@@ -122,7 +155,36 @@
 
   body {
     @apply bg-background text-foreground;
+    background-image: linear-gradient(
+      145deg,
+      transparent 0%,
+      transparent 72%,
+      var(--portfolio-accent-soft) 100%
+    );
+    background-attachment: fixed;
+    transition: background-color 180ms ease, color 180ms ease;
   }
+}
+
+::selection {
+  background: var(--portfolio-accent);
+  color: white;
+}
+
+.accent-text {
+  color: var(--portfolio-accent);
+}
+
+.accent-border {
+  border-color: var(--portfolio-accent);
+}
+
+.accent-bg {
+  background: var(--portfolio-accent);
+}
+
+.accent-soft-bg {
+  background: var(--portfolio-accent-soft);
 }
 
 .card-content {

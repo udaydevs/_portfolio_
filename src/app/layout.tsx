@@ -1,6 +1,7 @@
 import "./globals.css"
 import { Rammetto_One } from 'next/font/google'
 import { ThemeProvider } from "@/components/ui/theme-provider"
+import Sidebar from "@/components/ui/sidebar"
 
 const rammetto = Rammetto_One({
   weight: '400',
@@ -11,7 +12,7 @@ const rammetto = Rammetto_One({
 
 export const metadata = {
   title: {
-    default: "Uday Pratap Singh",
+    default: "Uday Pratap Singh | Full-Stack & AI Engineer",
     template: "%s | Uday Pratap Singh",
   },
 
@@ -19,13 +20,15 @@ export const metadata = {
     "Uday Pratap Singh is a Backend Developer and Generative AI enthusiast skilled in Python, Django, FastAPI, APIs, and modern web technologies.",
 
   keywords: [
-    "Uday Pratap Singh",
-    "Backend Developer",
-    "Python Developer",
+    "Full-Stack Developer",
+    "AI Engineer",
+    "FastAPI",
     "Django",
-    "FastApi",
-    "GenAI",
-    "Portfolio",
+    "RAG",
+    "LLM",
+    "Next.js",
+    "Python Developer India",
+    "Generative AI Developer",
   ],
 
   authors: [{ name: "Uday Pratap Singh" }],

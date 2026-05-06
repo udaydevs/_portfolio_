@@ -8,7 +8,7 @@ export default function Shishi({ onClose }: { onClose: () => void }) {
 
     return (
         <div
-            className="relative w-full h-full overflow-hidden bg-[#F7F493]"
+            className="relative  w-full h-full overflow-hidden bg-[#F7F493]"
         >
             <div className="card-cover absolute inset-0 z-10 flex flex-col items-center justify-center ">
                 <img

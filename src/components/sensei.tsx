@@ -7,7 +7,7 @@ const pr = data.projects[0]
 export default function Sensei({ onClose }: { onClose: () => void }) {
     return (
         <div
-            className="relative w-full h-full"
+            className="relative  w-full h-full"
             style={{
                 backgroundImage:
                     "url('https://img.freepik.com/free-vector/hand-drawn-painted-whitewash-background_23-2151171148.jpg?w=740')",

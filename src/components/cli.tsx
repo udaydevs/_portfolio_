@@ -11,7 +11,7 @@ export default function CliTool({ onClose }: { onClose: () => void }) {
         >
             <div className="card-cover absolute inset-0 z-10 no-scrollbar flex flex-col items-center justify-center ">
                 <img
-                    src={pr.gallery[0].image}
+                    src={pr.gallery[0]?.image}
                     className="h-24 w-24 object-contain mb-4"
                 />
             </div>

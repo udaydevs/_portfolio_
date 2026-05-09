@@ -21,6 +21,7 @@ export default function Page() {
     const contactsRef = useRef<HTMLDivElement | null>(null);
     const activeIndex = useRef<number | null>(null);
     const originalRects = useRef<Record<number, DOMRect & { radius: string }>>({});
+    const previousBodyOverflow = useRef("");
     const textRefs = useRef<HTMLParagraphElement | null>(null);
     const splitInstance = useRef<any>(null);
 
@@ -38,6 +39,7 @@ export default function Page() {
         };
 
         activeIndex.current = index;
+        previousBodyOverflow.current = document.body.style.overflow;
         document.body.style.overflow = "hidden";
 
         el.classList.add("is-expanding");
@@ -48,7 +50,7 @@ export default function Page() {
             left: `${rect.left}px`,
             width: `${rect.width}px`,
             height: `${rect.height}px`,
-            zIndex: "100",
+            zIndex: "60",
             overflow: "hidden",
         });
 
@@ -58,8 +60,8 @@ export default function Page() {
             width: "100vw",
             height: "100vh",
             borderRadius: 0,
-            easing: "inOutQuad",
-            duration: 450,
+            easing: "linear",
+            duration: 350,
         });
     };
 
@@ -93,7 +95,7 @@ export default function Page() {
                     overflow: "",
                 });
 
-                document.body.style.overflow = "auto";
+                document.body.style.overflow = previousBodyOverflow.current;
                 activeIndex.current = null;
             },
         });
@@ -123,19 +125,17 @@ useLayoutEffect(() => {
 }, []);
     useLayoutEffect(() => {
         return () => {
-            document.body.style.overflow = "auto";
+            document.body.style.overflow = previousBodyOverflow.current;
             activeIndex.current = null;
         };
     }, []);
 
     return (
-        <div className="w-full flex justify-center overflow-y-auto">
-            <div className="w-9/10 lg:w-[60%] flex flex-col mt-16 overflow-y-auto">
-                <div className="
-                flex justify-end 
-                ">
+        <div className="flex min-h-dvh w-full justify-center overflow-x-hidden px-4 sm:px-6">
+            <div className="mt-14 flex w-full max-w-5xl flex-col sm:mt-16 lg:max-w-[60rem]">
+                <div className="relative z-[10] flex items-start justify-between gap-5">
                     <p ref={textRefs} style={{ visibility: 'visible' }}
-                        className="text-3xl z-10 md:text-4xl w-full h-20">
+                        className="min-h-20 w-full text-3xl leading-tight md:text-4xl">
                         Uday
                         <br />
                         Pratap Singh
@@ -145,11 +145,11 @@ useLayoutEffect(() => {
 
 
 
-                <p className="text-sm font-mono mt-2 md:mt-5">
+                <p className="mt-2 font-mono text-sm leading-7 md:mt-5">
                     Full-Stack & AI Engineer based in Delhi-NCR. I build scalable web apps and intelligent AI systems using Python, FastAPI, Next.js, and Generative AI. Open to freelance, internships & full-time roles.I build scalable web applications and intelligent AI-driven systems, from RAG pipelines and LLM integrations to clean, fast APIs and polished frontend experiences.
                 </p>
 
-                <div ref={contactsRef} className="w-50 px-1 h-fit flex gap-4 mt-7">
+                <div ref={contactsRef} className="mt-7 flex h-fit w-fit max-w-full gap-4 px-1">
                     <IconWrapper dashed link="https://github.com/udaydevs">
                         <GitHubIcon fontSize="large" />
                     </IconWrapper>
@@ -165,7 +165,7 @@ useLayoutEffect(() => {
                     Projects
                 </p>
 
-                <div className="no-scrollbar flex  items-center justify-around flex-nowrap w-full z-2 md:z-70 h-88 overflow-x-auto overflow-y-clip gap-4 mt-3">
+                <div className="no-scrollbar relative z-5 md:z-10 mt-3 flex h-[22rem] w-full snap-x snap-mandatory flex-nowrap items-center gap-4 overflow-x-auto overflow-y-clip pb-3">
                     {data.projects.map((project, i) => (
                         <div
                             key={i}
@@ -175,7 +175,7 @@ useLayoutEffect(() => {
                                 }
                             }}
                             onClick={() => openCard(i)}
-                            className="shrink-0 hover:-translate-y-3 hover:ease-in-out no-scrollbar overflow-hidden w-4/5 md:w-2/5 lg:w-[23%] h-80 rounded-2xl cursor-pointer ring-1 ring-transparent transition-all hover:ring-[var(--portfolio-accent)]"
+                            className="no-scrollbar h-80 w-[min(82vw,20rem)] shrink-0 snap-start cursor-pointer overflow-hidden rounded-2xl ring-1 ring-transparent transition-all hover:-translate-y-3 hover:ring-[var(--portfolio-accent)] md:w-[18rem] lg:w-[23%] lg:min-w-[13rem]"
                         >
                             {project.gallery[0].link == 'Sensei' ?
                                 <Sensei onClose={closeCard} /> : project.gallery[0].link == 'Shishi' ?
@@ -183,7 +183,7 @@ useLayoutEffect(() => {
                         </div>
                     ))}
                 </div>
-                <div className="z-0">
+                <div className="relative z-0">
                     <p className="text-xl mt-3 font-medium">
                         Tech Stack
                     </p>

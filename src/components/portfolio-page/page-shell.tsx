@@ -13,8 +13,8 @@ type PageShellProps = {
 
 export function PageShell({ label, title, description, children }: PageShellProps) {
   return (
-    <main className="min-h-dvh w-full bg-background text-foreground">
-      <div className="mx-auto flex w-9/10 max-w-5xl flex-col px-0 py-10 md:py-14">
+    <main className="min-h-dvh w-full overflow-x-hidden bg-background text-foreground">
+      <div className="mx-auto flex w-full max-w-5xl flex-col px-4 py-10 sm:px-6 md:py-14 lg:px-0">
         <header className="flex items-start justify-between gap-6">
           <Link
             href="/home"

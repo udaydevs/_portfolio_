@@ -83,7 +83,7 @@ export default function NotFound() {
   return (
     <main
       ref={pageRef}
-      className="relative z-1 flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-5 py-16 text-foreground"
+      className="relative z-[1] flex min-h-dvh w-full items-center justify-center overflow-hidden bg-background px-5 py-16 text-foreground"
     >
       <div
         ref={marksRef}

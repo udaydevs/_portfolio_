@@ -50,7 +50,7 @@ export default function Sidebar() {
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
         onClick={() => setIsOpen((current) => !current)}
-        className="md:static fixed cursor-pointer right-5 top-5 z-[60] flex h-10 w-10 items-center justify-center rounded-full border border-dashed border-gray-800 bg-background text-foreground shadow-lg transition hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-accent)] hover:text-white dark:border-gray-100"
+        className="fixed right-5 top-5 z-[90] flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-dashed border-gray-800 bg-background text-foreground shadow-lg transition hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-accent)] hover:text-white dark:border-gray-100"
       >
         {isOpen ? (
           <X size={20} />
@@ -62,16 +62,16 @@ export default function Sidebar() {
         type="button"
         aria-label="Close menu overlay"
         onClick={() => setIsOpen(false)}
-        className={`fixed inset-0 z-[40] bg-transparent transition-opacity duration-300 md:hidden ${isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        className={`fixed inset-0 z-[70] bg-background/40 backdrop-blur-[1px] transition-opacity duration-300 ${isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
           }`}
       />
 
       <aside
         aria-hidden={!isOpen}
-        className={`fixed right-0 top-0 z-[50] flex h-dvh w-[min(82vw,22rem)] flex-col border-l border-border bg-background px-6 py-24 text-foreground transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed right-0 top-0 z-[80] flex h-dvh w-[min(92vw,22rem)] flex-col overflow-y-auto overscroll-contain border-l border-border bg-background px-5 pb-8 pt-24 text-foreground shadow-2xl transition-transform duration-300 ease-out sm:px-6 ${isOpen ? "translate-x-0" : "translate-x-full"
           }`}
       >
-        <nav className="flex flex-col gap-3">
+        <nav className="flex shrink-0 flex-col gap-3">
           {navItems.map((item) => {
             const Icon = item.icon;
 
@@ -89,7 +89,7 @@ export default function Sidebar() {
           })}
         </nav>
 
-        <div className="mt-8 flex   flex-col border-t border-border pt-6">
+        <div className="mt-8 flex shrink-0 flex-col border-t border-border pt-6">
           <div className="font-mono font-bold mb-3">Appearance</div>
           <div className="">
             <div className="flex items-center justify-between mb-2 p-1"><span className="text-sm font-mono">Theme</span>
@@ -99,10 +99,10 @@ export default function Sidebar() {
             </div>
           </div>
         </div>
-        <div className="mt-auto flex items-center gap-1 border-t border-border pt-6">
+        <div className="mt-8 flex shrink-0 items-center gap-1 border-t border-border pt-6">
           <GitStats/>
         </div>
-        <div className="mt-auto flex items-center gap-1 border-t border-border pt-6">
+        <div className="mt-6 flex shrink-0 flex-wrap items-center gap-2 border-t border-border pt-6">
           {socialItems.map((item) => {
             const Icon = item.icon;
 
@@ -112,7 +112,7 @@ export default function Sidebar() {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-8 items-center gap-2 rounded-md border border-dashed px-2 mr-1 text-center text-[14px] font-mono transition hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-accent)] hover:text-white"
+                className="flex h-8 items-center gap-2 rounded-md border border-dashed px-2 text-center text-[14px] font-mono transition hover:border-[var(--portfolio-accent)] hover:bg-[var(--portfolio-accent)] hover:text-white"
               >
                 <Icon size={15} />
                 {item.label}

@@ -12,12 +12,13 @@ export default function Sensei({ onClose }: { onClose: () => void }) {
             <div className="card-cover absolute inset-0 z-10 overflow-hidden flex flex-col items-center justify-center ">
                 <img
                     src={pr.gallery[0].image}
+                    alt=""
                     className="h-24 w-24 scale-250 object-contain mb-4"
                 />
             </div>
 
-            <div className="card-content absolute inset-0 z-0 overflow-y-auto  pb-20 sm:pb-0 text-white">
-                <div className="w-4/5 lg:w-[60%] pb-5 mx-auto mt-10 md:mt-16">
+            <div className="card-content absolute inset-0 z-20 overflow-y-auto pb-20 text-white sm:pb-8">
+                <div className="mx-auto mt-6 w-[min(90vw,64rem)] pb-5 md:mt-12 lg:w-[60%]">
                     <button
                         onClick={(e) => {
                             e.stopPropagation();
@@ -28,10 +29,10 @@ export default function Sensei({ onClose }: { onClose: () => void }) {
                         <ArrowBackIcon fontSize="large" />
                     </button>
 
-                    <div className="flex flex-col md:flex-row justify-between w-full ">
-                        <div className="card-title flex md:w-2/5 flex-col md:flex-row mt-3 ">
-                            <div className="w-full text-2xl mb-4 overflow-y-auto">
-                                <div><img src={pr.gallery[0].image} className="h-20 w-20 scale-200 mb-2 object-contain" /></div>
+                    <div className="flex w-full flex-col gap-6 md:flex-row md:justify-between">
+                        <div className="card-title mt-3 flex flex-col md:w-2/5 md:flex-row">
+                            <div className="mb-4 w-full overflow-y-auto break-words text-2xl">
+                                <div><img src={pr.gallery[0].image} alt="" className="mb-2 h-20 w-20 scale-200 object-contain" /></div>
                                 <span
                                     onClick={() => window.open(pr.url)}
                                     className="title hover:underline">{pr.title}<br />({pr.subtitle})
@@ -47,7 +48,7 @@ export default function Sensei({ onClose }: { onClose: () => void }) {
                                 })}
                             </div>
                         </div>
-                        <div className="card-description md:w-4/8 py-3  font-mono">{pr.description}</div>
+                        <div className="card-description py-3 font-mono text-sm leading-7 md:w-1/2">{pr.description}</div>
                     </div>
 
                 </div>

@@ -1,13 +1,16 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { animate, svg, stagger } from "animejs";
-import { X, Home, Mail, Github, Linkedin, ShieldUser, Monitor, Code2, Download, User, Briefcase, } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { X, Home, Mail, Github, Linkedin, Monitor, Code2, Download, User, Briefcase, Menu } from "lucide-react";
+import { useState } from "react";
 import { ModeToggle } from "@/components/ui/theme";
-import MenuSharpIcon from '@mui/icons-material/MenuSharp';
-import GitStats from "../gitStats";
 import AccentPicker from "@/components/ui/accent-picker";
+
+const GitStats = dynamic(() => import("../gitStats"), {
+  ssr: false,
+  loading: () => <p className="font-mono mt-2">Loading GitHub stats...</p>,
+});
 const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/about", label: "About", icon: User },
@@ -26,22 +29,6 @@ const socialItems = [
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
-  const menuIconRef = useRef<SVGSVGElement | null>(null);
-
-  useEffect(() => {
-    if (!menuIconRef.current || isOpen) return;
-
-    const drawables = svg.createDrawable(
-      menuIconRef.current.querySelectorAll("path")
-    );
-
-    animate(drawables, {
-      draw: ["0 0", "0 1"],
-      ease: "inOutQuad",
-      duration: 650,
-      delay: stagger(80),
-    });
-  }, [isOpen]);
 
   return (
     <>
@@ -54,7 +41,7 @@ export default function Sidebar() {
       >
         {isOpen ? (
           <X size={20} />
-        ) : (<MenuSharpIcon fontSize="small" />
+        ) : (<Menu size={20} />
         )}
       </button>
 
@@ -100,7 +87,7 @@ export default function Sidebar() {
           </div>
         </div>
         <div className="mt-8 flex shrink-0 items-center gap-1 border-t border-border pt-6">
-          <GitStats/>
+          {isOpen ? <GitStats /> : null}
         </div>
         <div className="mt-6 flex shrink-0 flex-wrap items-center gap-2 border-t border-border pt-6">
           {socialItems.map((item) => {

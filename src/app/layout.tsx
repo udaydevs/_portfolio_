@@ -1,7 +1,6 @@
 import "./globals.css"
 import { Rammetto_One } from 'next/font/google'
 import { ThemeProvider } from "@/components/ui/theme-provider"
-import Sidebar from "@/components/ui/sidebar"
 
 const rammetto = Rammetto_One({
   weight: '400',

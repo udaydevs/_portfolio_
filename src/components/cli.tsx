@@ -1,7 +1,6 @@
 "use client"
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import data from "../../projects.json"
-import LaunchIcon from '@mui/icons-material/Launch';
+import { ArrowLeft, ExternalLink } from "lucide-react";
 const pr = data.projects[3]
 
 export default function CliTool({ onClose }: { onClose: () => void }) {
@@ -13,6 +12,8 @@ export default function CliTool({ onClose }: { onClose: () => void }) {
                 <img
                     src={pr.gallery[0]?.image}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className="h-24 w-24 object-contain mb-4"
                 />
             </div>
@@ -26,17 +27,17 @@ export default function CliTool({ onClose }: { onClose: () => void }) {
                         }}
                         className="w-12 h-12 flex items-center justify-center rounded-full transition-all hover:scale-110 hover:bg-black hover:text-white"
                     >
-                        <ArrowBackIcon fontSize="large" />
+                        <ArrowLeft size={30} />
                     </button>
 
                     <div className="flex w-full flex-col gap-6 md:flex-row md:justify-between">
                     <div className="card-title mt-3 flex flex-col md:w-2/5 md:flex-row">
                         <div className="mb-4 w-full overflow-y-auto break-words text-2xl">
-                            <div><img src={pr.gallery[0].image} alt="" className="mb-2 h-20 w-20 object-contain" /></div>
+                            <div><img src={pr.gallery[0].image} alt="" loading="lazy" decoding="async" className="mb-2 h-20 w-20 object-contain" /></div>
                             <span
                                 onClick={() => window.open(pr.url)}
                                 className="title hover:underline">{pr.title}<br />({pr.subtitle})
-                                <LaunchIcon />
+                                <ExternalLink className="inline h-6 w-6" />
                             </span>
                             <div className="font-mono text-sm font-extrabold  mt-4">Role: <span className="font-light ">{pr.role}</span></div>
                             <div className="font-mono text-sm font-extrabold  mt-2">Duration: <span className="font-light ">{pr.duration}</span></div>

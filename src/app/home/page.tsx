@@ -1,12 +1,9 @@
 "use client";
 
-import { animate, cubicBezier, splitText, stagger } from "animejs";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import MarkunreadIcon from "@mui/icons-material/Markunread";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import { animate, splitText, stagger } from "animejs";
+import { Github, Heart, Linkedin, Mail } from "lucide-react";
 import Stacks from "@/components/stacks";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import data from "../../../projects.json"
 import Sensei from "@/components/sensei";
 import LiftMyMind from "@/components/liftmymind";
@@ -101,7 +98,7 @@ export default function Page() {
         });
     };
 
-useLayoutEffect(() => {
+useEffect(() => {
     const timer = setTimeout(() => {
         if (textRefs.current) {
             splitInstance.current = splitText(textRefs.current, {
@@ -123,7 +120,7 @@ useLayoutEffect(() => {
         splitInstance.current = null;
     };
 }, []);
-    useLayoutEffect(() => {
+    useEffect(() => {
         return () => {
             document.body.style.overflow = previousBodyOverflow.current;
             activeIndex.current = null;
@@ -132,7 +129,7 @@ useLayoutEffect(() => {
 
     return (
         <div className="flex min-h-dvh w-full justify-center overflow-x-hidden px-4 sm:px-6">
-            <div className="mt-14 flex w-full max-w-5xl flex-col sm:mt-16 lg:max-w-[60rem]">
+            <div className="mt-14 flex w-full max-w-5xl flex-col sm:mt-16 lg:max-w-[65rem]">
                 <div className="relative z-[10] flex items-start justify-between gap-5">
                     <p ref={textRefs} style={{ visibility: 'visible' }}
                         className="min-h-20 w-full text-3xl leading-tight md:text-4xl">
@@ -151,13 +148,13 @@ useLayoutEffect(() => {
 
                 <div ref={contactsRef} className="mt-7 flex h-fit w-fit max-w-full gap-4 px-1">
                     <IconWrapper dashed link="https://github.com/udaydevs">
-                        <GitHubIcon fontSize="large" />
+                        <Github size={30} />
                     </IconWrapper>
                     <IconWrapper dashed link="mailto:udaysinghno2005@gmail.com">
-                        <MarkunreadIcon fontSize="large" />
+                        <Mail size={30} />
                     </IconWrapper>
                     <IconWrapper dashed link="https://www.linkedin.com/in/uday-coder/">
-                        <LinkedInIcon fontSize="large" />
+                        <Linkedin size={30} />
                     </IconWrapper>
                 </div>
 
@@ -190,7 +187,7 @@ useLayoutEffect(() => {
                     <Stacks />
                     <div className="mt-10 border-t border-gray-600 p-3 flex justify-center transition-colors hover:border-[var(--portfolio-accent)]">
                         <p className="text-sm font-mono font-extralight flex items-center gap-1">
-                            Made with <FavoriteIcon fontSize="small" className="accent-text" /> by <a href="https://github.com/udaydevs" className="transition hover:text-[var(--portfolio-accent)]" >udaydevs</a>
+                            Made with <Heart size={16} className="accent-text" /> by <a href="https://github.com/udaydevs" className="transition hover:text-[var(--portfolio-accent)]" >udaydevs</a>
                         </p>
                     </div>
                 </div>

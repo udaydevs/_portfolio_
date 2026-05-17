@@ -36,6 +36,9 @@ export default function Stacks() {
         >
           <img
             src={`https://skillicons.dev/icons?i=${stack.name}&theme=${currenttheme}`}
+            alt={stack.title ?? stack.name}
+            loading="lazy"
+            decoding="async"
             className="h-8 w-8 pointer-events-none"
           />
         </div>

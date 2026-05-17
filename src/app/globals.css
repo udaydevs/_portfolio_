@@ -46,6 +46,9 @@
   --portfolio-accent: #737373;
   --portfolio-accent-soft: rgb(115 115 115 / 0.14);
   --portfolio-accent-strong: #404040;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: rgb(51 51 51 / 0.14);
+  --scrollbar-thumb-hover: rgb(51 51 51 / 0.32);
   --background: oklch(1 0 0);
   --foreground: #333333;
   --card: oklch(1 0 0);
@@ -110,6 +113,8 @@
 }
 
 .dark {
+  --scrollbar-thumb: rgb(255 255 255 / 0.16);
+  --scrollbar-thumb-hover: rgb(255 255 255 / 0.36);
   --background: #333333;
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -159,6 +164,11 @@
     overflow-x: hidden;
   }
 
+  html {
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+    scrollbar-width: thin;
+  }
+
   body {
     @apply bg-background text-foreground;
     background-image: linear-gradient(
@@ -170,6 +180,34 @@
     background-attachment: fixed;
     transition: background-color 180ms ease, color 180ms ease;
   }
+}
+
+*::-webkit-scrollbar {
+  width: 0.45rem;
+  height: 0.45rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  min-height: 2.5rem;
+  border: 0.13rem solid transparent;
+  border-radius: 999px;
+  background:
+    linear-gradient(var(--scrollbar-thumb), var(--scrollbar-thumb))
+    padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(var(--scrollbar-thumb-hover), var(--scrollbar-thumb-hover))
+    padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 ::selection {

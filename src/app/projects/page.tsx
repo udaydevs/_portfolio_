@@ -24,6 +24,8 @@ export default function ProjectsPage() {
                   <img
                     src={project.gallery[0].image}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className="h-10 w-10 object-contain"
                   />
                 </div>

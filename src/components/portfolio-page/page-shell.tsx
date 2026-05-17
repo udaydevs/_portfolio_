@@ -1,5 +1,3 @@
-"use client";
-
 import Sidebar from "@/components/ui/sidebar";
 import Link from "next/link";
 import type { ReactNode } from "react";

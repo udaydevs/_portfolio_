@@ -172,6 +172,9 @@ export default function GitStatsPage() {
                 <img
                   src={user.avatar_url}
                   alt={`${user.login} GitHub avatar`}
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
                   className="h-20 w-20 rounded-full border border-dashed border-border"
                 />
                 <div>
@@ -232,6 +235,8 @@ export default function GitStatsPage() {
               <img
                 src={`https://ghchart.rshah.org/${accentChartColors[chartAccent]}/${username}`}
                 alt={`${username} GitHub contribution heatmap`}
+                loading="lazy"
+                decoding="async"
                 className="min-h-32 min-w-[720px] max-w-none"
               />
             </div>

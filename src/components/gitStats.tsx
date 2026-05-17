@@ -53,6 +53,9 @@ export default function GitStats() {
                 <img
                     src={data.avatar_url}
                     alt="avatar"
+                    loading="lazy"
+                    decoding="async"
+                    referrerPolicy="no-referrer"
                     className="w-15 h-15 rounded-full"
                 />
 

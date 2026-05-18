@@ -47,7 +47,7 @@ export default function Page() {
             left: `${rect.left}px`,
             width: `${rect.width}px`,
             height: `${rect.height}px`,
-            zIndex: "60",
+            zIndex: "100",
             overflow: "hidden",
         });
 
@@ -57,7 +57,7 @@ export default function Page() {
             width: "100vw",
             height: "100vh",
             borderRadius: 0,
-            easing: "linear",
+            easing: "inOutQuad",
             duration: 350,
         });
     };
@@ -80,7 +80,7 @@ export default function Page() {
             height: `${original.height}px`,
             borderRadius: original.radius,
             easing: "inOutQuad",
-            duration: 350,
+            duration: 200,
             complete: () => {
                 Object.assign(el.style, {
                     position: "",
@@ -98,28 +98,28 @@ export default function Page() {
         });
     };
 
-useEffect(() => {
-    const timer = setTimeout(() => {
-        if (textRefs.current) {
-            splitInstance.current = splitText(textRefs.current, {
-                lines: { wrap: 'clip' },
-            }).addEffect(({ lines }) =>
-                animate(lines, {
-                    y: ['100%', '0%'],
-                    duration: 750,
-                    easing: 'out(3)',
-                    delay: stagger(200),
-                })
-            );
-        }
-    }, 50);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (textRefs.current) {
+                splitInstance.current = splitText(textRefs.current, {
+                    lines: { wrap: 'clip' },
+                }).addEffect(({ lines }) =>
+                    animate(lines, {
+                        y: ['100%', '0%'],
+                        duration: 750,
+                        easing: 'out(3)',
+                        delay: stagger(200),
+                    })
+                );
+            }
+        }, 50);
 
-    return () => {
-        clearTimeout(timer);
-        splitInstance.current?.revert();
-        splitInstance.current = null;
-    };
-}, []);
+        return () => {
+            clearTimeout(timer);
+            splitInstance.current?.revert();
+            splitInstance.current = null;
+        };
+    }, []);
     useEffect(() => {
         return () => {
             document.body.style.overflow = previousBodyOverflow.current;
@@ -128,16 +128,19 @@ useEffect(() => {
     }, []);
 
     return (
-        <div className="flex min-h-dvh w-full justify-center overflow-x-hidden px-4 sm:px-6">
+        <div className="relative z-0 flex min-h-dvh w-full justify-center overflow-x-hidden px-4 sm:px-6">
             <div className="mt-14 flex w-full max-w-5xl flex-col sm:mt-16 lg:max-w-[65rem]">
-                <div className="relative z-[10] flex items-start justify-between gap-5">
+                <div className="relative z-[15]">
+                    <Sidebar />
+                </div>
+                <div className="relative z-[5] flex items-start justify-between gap-5">
                     <p ref={textRefs} style={{ visibility: 'visible' }}
                         className="min-h-20 w-full text-3xl leading-tight md:text-4xl">
                         Uday
                         <br />
                         Pratap Singh
                     </p>
-                    <Sidebar />
+
                 </div>
 
 
@@ -162,7 +165,7 @@ useEffect(() => {
                     Projects
                 </p>
 
-                <div className="no-scrollbar relative z-5 md:z-10 mt-3 flex h-[22rem] w-full snap-x snap-mandatory flex-nowrap items-center gap-4 overflow-x-auto overflow-y-clip pb-3">
+                <div className="no-scrollbar relative z-[8] mt-3 flex h-[22rem] w-full snap-x snap-mandatory flex-nowrap items-center gap-4 overflow-x-auto overflow-y-clip pb-3">
                     {data.projects.map((project, i) => (
                         <div
                             key={i}
@@ -172,7 +175,7 @@ useEffect(() => {
                                 }
                             }}
                             onClick={() => openCard(i)}
-                            className="no-scrollbar h-80 w-[min(82vw,20rem)] shrink-0 snap-start cursor-pointer overflow-hidden rounded-2xl ring-1 ring-transparent transition-all hover:-translate-y-3 hover:ring-[var(--portfolio-accent)] md:w-[18rem] lg:w-[23%] lg:min-w-[13rem]"
+                            className="no-scrollbar h-80  w-[min(82vw,20rem)] shrink-0 snap-start cursor-pointer overflow-hidden rounded-2xl ring-1 ring-transparent   md:w-[18rem] lg:w-[23%] lg:min-w-[13rem]"
                         >
                             {project.gallery[0].link == 'Sensei' ?
                                 <Sensei onClose={closeCard} /> : project.gallery[0].link == 'Shishi' ?

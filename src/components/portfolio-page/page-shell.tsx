@@ -3,13 +3,12 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 type PageShellProps = {
-  label: string;
   title: string;
   description?: string;
   children: ReactNode;
 };
 
-export function PageShell({ label, title, description, children }: PageShellProps) {
+export function PageShell({ title, description, children }: PageShellProps) {
   return (
     <main className="min-h-dvh w-full overflow-x-hidden bg-background text-foreground">
       <div className="mx-auto flex w-full max-w-5xl flex-col px-4 py-10 sm:px-6 md:py-14 lg:px-0">
@@ -23,10 +22,7 @@ export function PageShell({ label, title, description, children }: PageShellProp
           <Sidebar />
         </header>
 
-        <section className="mt-14 border-y border-dashed border-border py-8 md:mt-20 md:py-10">
-          <p className="font-mono text-xs uppercase accent-text">
-            {label}
-          </p>
+        <section className="mt-7 border-y border-dashed border-border py-8 md:mt-10 md:py-10">
           <h1 className="mt-3 text-3xl leading-tight md:text-5xl">{title}</h1>
           {description ? (
             <p className="mt-5 max-w-3xl font-mono text-sm leading-7 text-muted-foreground md:text-base">

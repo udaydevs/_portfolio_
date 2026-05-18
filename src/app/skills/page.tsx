@@ -36,7 +36,6 @@ export const metadata = {
 export default function SkillsPage() {
   return (
     <PageShell
-      label="// tech stack"
       title="Tools of the Trade"
       description="A curated set of technologies I use to build production-grade applications, AI systems, and polished interfaces."
     >

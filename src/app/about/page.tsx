@@ -38,7 +38,6 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <PageShell
-      label="// about me"
       title="The Developer Behind the Code"
       description="I build scalable web applications and intelligent AI-driven systems, with a strong bias toward practical products that ship."
     >

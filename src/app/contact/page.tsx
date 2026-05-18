@@ -37,7 +37,6 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <PageShell
-      label="// let's connect"
       title="Got a Project in Mind?"
       description="I'm open to freelance projects, internships, and full-time opportunities. Let's build something useful."
     >

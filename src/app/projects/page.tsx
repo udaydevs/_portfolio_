@@ -11,7 +11,6 @@ export const metadata = {
 export default function ProjectsPage() {
   return (
     <PageShell
-      label="// featured work"
       title="Things I've Built"
       description="Real projects solving real problems, from AI tutors to mental wellness platforms and backend systems."
     >

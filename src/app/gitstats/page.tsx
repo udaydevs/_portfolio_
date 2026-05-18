@@ -146,7 +146,6 @@ export default function GitStatsPage() {
 
   return (
     <PageShell
-      label="// github stats"
       title="GitHub Activity"
       description="A live snapshot of repositories, languages, and profile numbers from Uday's public GitHub profile."
     >

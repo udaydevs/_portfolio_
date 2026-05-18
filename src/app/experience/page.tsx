@@ -19,7 +19,6 @@ export const metadata = {
 export default function ExperiencePage() {
   return (
     <PageShell
-      label="// experience"
       title="Where I've Worked"
       description="Hands-on work across web development, databases, healthcare technology, open source, and hackathon builds."
     >

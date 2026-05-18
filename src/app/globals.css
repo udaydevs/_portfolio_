@@ -149,8 +149,14 @@
 }
 
 @layer utilities {
-  /* Chrome, Safari and Opera */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer base {
@@ -165,8 +171,8 @@
   }
 
   html {
-    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
-    scrollbar-width: thin;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   body {
@@ -183,31 +189,7 @@
 }
 
 *::-webkit-scrollbar {
-  width: 0.45rem;
-  height: 0.45rem;
-}
-
-*::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
-}
-
-*::-webkit-scrollbar-thumb {
-  min-height: 2.5rem;
-  border: 0.13rem solid transparent;
-  border-radius: 999px;
-  background:
-    linear-gradient(var(--scrollbar-thumb), var(--scrollbar-thumb))
-    padding-box;
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background:
-    linear-gradient(var(--scrollbar-thumb-hover), var(--scrollbar-thumb-hover))
-    padding-box;
-}
-
-*::-webkit-scrollbar-corner {
-  background: transparent;
+  display: none;
 }
 
 ::selection {
